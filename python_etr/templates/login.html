@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .login-container {
+        background: #ffffff;
+        padding: 50px 40px;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .login-container:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+      }
+
+      .login-container h2 {
+        font-size: 2.5em;
+        color: #6a11cb;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      .login-container input {
+        width: 100%;
+        padding: 14px;
+        margin: 15px 0;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+        background: #f7f7f7;
+        color: #333;
+        font-size: 1em;
+        outline: none;
+        transition: border 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .login-container input:focus {
+        border-color: #6a11cb;
+        background: #fff;
+        box-shadow: 0 0 8px rgba(106, 17, 203, 0.5);
+      }
+
+      .login-container button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 20px;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        border: none;
+        border-radius: 25px;
+        color: white;
+        font-size: 1.2em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .login-container button:hover {
+        background: linear-gradient(135deg, #5a0db1, #1f5ab6);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .login-container button:active {
+        transform: translateY(0);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .error-message {
+        color: #e74c3c;
+        font-size: 0.9em;
+        margin-top: 15px;
+        text-align: left;
+      }
+
+      /* Footer text */
+      .login-container footer {
+        margin-top: 20px;
+        font-size: 0.85em;
+        color: #888;
+      }
+
+      .login-container footer a {
+        color: #6a11cb;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .login-container footer a:hover {
+        color: #2575fc;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .login-container {
+          padding: 30px 25px;
+        }
+
+        .login-container h2 {
+          font-size: 2em;
+        }
+
+        .login-container input,
+        .login-container button {
+          font-size: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Login</h2>
+      <form method="POST">
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
+
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <p class="error-message">{{ message }}</p>
+      {% endfor %} {% endif %} {% endwith %}
+
+      <footer>
+        <p>Forgot your password? <a href="#">Reset it here</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
